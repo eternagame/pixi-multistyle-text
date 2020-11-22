@@ -1,6 +1,6 @@
 {
   "name": "pixi-multistyle-text",
-  "version": "0.10.0",
+  "version": "0.10.0-filament",
   "description": "Multi-Style Text for pixi.js",
   "source": "src/pixi-multistyle-text.ts",
   "main": "dist/pixi-multistyle-text.js",
@@ -10,6 +10,7 @@
   "files": [
     "dist"
   ],
+  "registry": "http://registry.filamentgames.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/tleunen/pixi-multistyle-text.git"
