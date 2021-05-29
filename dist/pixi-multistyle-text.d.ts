@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import { ITextStyle } from "pixi.js";
-export interface TextStyleExtended extends ITextStyle {
+export interface TextStyleExtended extends Partial<ITextStyle> {
     valign?: "top" | "middle" | "bottom" | "baseline" | number;
     debug?: boolean;
     tagStyle?: "xml" | "bbcode";

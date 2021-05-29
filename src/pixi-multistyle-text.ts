@@ -8,7 +8,7 @@ if (majorVersion< 5) {
   throw new Error(`Detected Pixi.js version ${PIXI.VERSION}. pixi-multistyle-text supports Pixi.js version 5+. (Please use v0.8.0 for Pixi 4 support.)`);
 }
 
-export interface TextStyleExtended extends ITextStyle {
+export interface TextStyleExtended extends Partial<ITextStyle> {
 	valign?: "top" | "middle" | "bottom" | "baseline" | number;
 	debug?: boolean;
 	tagStyle?: "xml" | "bbcode";
@@ -118,7 +118,7 @@ interface TextWithPrivateMembers {
 
 // @ts-ignore updateTexture is a private method
 export default class MultiStyleText extends PIXI.Text {
-	private static DEFAULT_TAG_STYLE: Partial<TextStyleExtended> = {
+	private static DEFAULT_TAG_STYLE: TextStyleExtended = {
 		align: "left",
 		breakWords: false,
 		// debug intentionally not included
