@@ -1,36 +1,6 @@
 import * as PIXI from "pixi.js";
-interface TextStyle {
-    align?: string;
-    breakWords?: boolean;
-    dropShadow?: boolean;
-    dropShadowAlpha?: number;
-    dropShadowAngle?: number;
-    dropShadowBlur?: number;
-    dropShadowColor?: string | number;
-    dropShadowDistance?: number;
-    fill?: string | string[] | number | number[] | CanvasGradient | CanvasPattern;
-    fillGradientType?: number;
-    fillGradientStops?: number[];
-    fontFamily?: string | string[];
-    fontSize?: number | string;
-    fontStyle?: string;
-    fontVariant?: string;
-    fontWeight?: string;
-    leading?: number;
-    letterSpacing?: number;
-    lineHeight?: number;
-    lineJoin?: string;
-    miterLimit?: number;
-    padding?: number;
-    stroke?: string | number;
-    strokeThickness?: number;
-    trim?: boolean;
-    textBaseline?: string;
-    whiteSpace?: string;
-    wordWrap?: boolean;
-    wordWrapWidth?: number;
-}
-export interface TextStyleExtended extends TextStyle {
+import { ITextStyle } from "pixi.js";
+export interface TextStyleExtended extends ITextStyle {
     valign?: "top" | "middle" | "bottom" | "baseline" | number;
     debug?: boolean;
     tagStyle?: "xml" | "bbcode";
@@ -85,4 +55,3 @@ export default class MultiStyleText extends PIXI.Text {
     protected updateTexture(): void;
     private assign;
 }
-export {};

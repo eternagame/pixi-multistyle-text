@@ -46,7 +46,7 @@
     "typescript": "^3.8.2"
   },
   "peerDependencies": {
-    "pixi.js": "^5.3.0"
+    "pixi.js": "^6.0.4"
   },
   "scripts": {
     "demo": "npm run build && opener demo/index.html",

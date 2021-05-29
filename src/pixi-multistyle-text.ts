@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import { ITextStyle } from "pixi.js";
 
 "use strict";
 
@@ -7,39 +8,7 @@ if (majorVersion< 5) {
   throw new Error(`Detected Pixi.js version ${PIXI.VERSION}. pixi-multistyle-text supports Pixi.js version 5+. (Please use v0.8.0 for Pixi 4 support.)`);
 }
 
-interface TextStyle {
-  align?: string;
-  breakWords?: boolean;
-  dropShadow?: boolean;
-  dropShadowAlpha?: number;
-  dropShadowAngle?: number;
-  dropShadowBlur?: number;
-  dropShadowColor?: string | number;
-  dropShadowDistance?: number;
-  fill?: string | string[] | number | number[] | CanvasGradient | CanvasPattern;
-  fillGradientType?: number;
-  fillGradientStops?: number[];
-  fontFamily?: string | string[];
-  fontSize?: number | string;
-  fontStyle?: string;
-  fontVariant?: string;
-  fontWeight?: string;
-  leading?: number;
-  letterSpacing?: number;
-  lineHeight?: number;
-  lineJoin?: string;
-  miterLimit?: number;
-  padding?: number;
-  stroke?: string | number;
-  strokeThickness?: number;
-  trim?: boolean;
-  textBaseline?: string;
-  whiteSpace?: string;
-  wordWrap?: boolean;
-  wordWrapWidth?: number;
-}
-
-export interface TextStyleExtended extends TextStyle {
+export interface TextStyleExtended extends ITextStyle {
 	valign?: "top" | "middle" | "bottom" | "baseline" | number;
 	debug?: boolean;
 	tagStyle?: "xml" | "bbcode";
@@ -147,8 +116,9 @@ interface TextWithPrivateMembers {
   _generateFillStyle(style: object, lines: string[]): string | number | CanvasGradient;
 }
 
+// @ts-ignore updateTexture is a private method
 export default class MultiStyleText extends PIXI.Text {
-	private static DEFAULT_TAG_STYLE: TextStyleExtended = {
+	private static DEFAULT_TAG_STYLE: Partial<TextStyleExtended> = {
 		align: "left",
 		breakWords: false,
 		// debug intentionally not included
@@ -884,7 +854,7 @@ export default class MultiStyleText extends PIXI.Text {
 
 		let dropShadowPadding = this.getDropShadowPadding();
 
-    texture.baseTexture.setRealSize(this.canvas.width, this.canvas.height, this.resolution);
+    	texture.baseTexture.setRealSize(this.canvas.width, this.canvas.height, this.resolution);
 		texture.trim.width = texture.frame.width = this.canvas.width / this.resolution;
 		texture.trim.height = texture.frame.height = this.canvas.height / this.resolution;
 

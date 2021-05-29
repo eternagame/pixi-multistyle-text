@@ -10,7 +10,8 @@
 		"noImplicitAny": true,
 		"outDir": "dist",
 		"declaration": true,
-		"pretty": true
+		"pretty": true,
+		"esModuleInterop": true
 	},
 	"exclude": [
 		"node_modules",
